@@ -27,11 +27,62 @@ public class JobForm {
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
-
+    @NotNull
     private ArrayList<Employer> employers;
+
+
+    public Employer getEmployer(){
+        JobData jobData = JobData.getInstance();
+        return jobData.getEmployers().findById(this.employerId);
+    }
+
+    @NotNull
+    private int locationId;
+
+    @NotNull
     private ArrayList<Location> locations;
+
+    public Location getLocation(){
+        JobData jobData = JobData.getInstance();
+        return jobData.getLocations().findById(this.locationId);
+    }
+    public int getLocationId() { return locationId; }
+    public void setLocationId(int locationId) { this.locationId = locationId; }
+
+    @NotNull
+    private int coreCompetencyId;
+
+    @NotNull
     private ArrayList<CoreCompetency> coreCompetencies;
+
+    public int getCoreCompetencyId() {
+        return coreCompetencyId;
+    }
+
+    public void setCoreCompetencyId(int coreCompetenciesId) {
+        this.coreCompetencyId = coreCompetenciesId;
+    }
+
+    @NotNull
+    public int positionTypeId;
+
+    @NotNull
     private ArrayList<PositionType> positionTypes;
+
+    public PositionType getPositionType(){
+        JobData jobData = JobData.getInstance();
+        return jobData.getPositionTypes().findById(this.positionTypeId);
+    }
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionTypeId(int positionTypesId) {
+        this.positionTypeId = positionTypesId;
+    }
+
+
 
     public JobForm() {
 
@@ -42,6 +93,9 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
 
     }
 
